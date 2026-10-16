@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Delete Martial Art | Martial Arts Academy
+{% endblock %}
+
+{% block content %}
+    <h2>Delete Martial Art</h2>
+
+    <p>
+        Are you sure you want to delete
+        <strong>{{ object.name }}</strong>?
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+
+    <a href="{% url 'martial-art-detail' object.pk %}">Cancel</a>
+{% endblock %}

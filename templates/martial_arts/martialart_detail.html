@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ object.name }} | Martial Arts Academy
+{% endblock %}
+
+{% block content %}
+    <h2>{{ object.name }}</h2>
+
+    <p>{{ object.description }}</p>
+
+    <a href="{% url 'martial-art-edit' object.pk %}">Edit</a>
+    <a href="{% url 'martial-art-delete' object.pk %}">Delete</a>
+    <a href="{% url 'martial-art-list' %}">Back to Martial Arts</a>
+{% endblock %}
