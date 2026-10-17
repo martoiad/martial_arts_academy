@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Events | Martial Arts Academy
+{% endblock %}
+
+{% block content %}
+    <h2>Events</h2>
+
+    <a href="{% url 'event-create' %}">Add Event</a>
+
+<p>
+    Filter:
+    <a href="{% url 'event-list' %}">All</a>
+    <a href="{% url 'event-list' %}?type=Seminar">Seminars</a>
+    <a href="{% url 'event-list' %}?type=Competition">Competitions</a>
+    <a href="{% url 'event-list' %}?type=Gala">Galas</a>
+</p>
+
+    {% for event in object_list %}
+        <article>
+            <h3>
+                <a href="{% url 'event-detail' event.pk %}">
+                    {{ event.title }}
+                </a>
+            </h3>
+
+            <p>Type: {{ event.get_event_type_display }}</p>
+            <p>Date: {{ event.date }}</p>
+            <p>Location: {{ event.location }}</p>
+        </article>
+    {% empty %}
+        <p>No events have been added yet.</p>
+    {% endfor %}
+{% endblock %}

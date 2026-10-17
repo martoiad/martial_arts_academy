@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ object.title }} | Martial Arts Academy
+{% endblock %}
+
+{% block content %}
+    <h2>{{ object.title }}</h2>
+
+    <p>Type: {{ object.get_event_type_display }}</p>
+    <p>Date: {{ object.date }}</p>
+    <p>Location: {{ object.location }}</p>
+    <p>{{ object.description }}</p>
+
+    {% if object.guest_name %}
+        <p>Special Guest: {{ object.guest_name }}</p>
+    {% endif %}
+
+    <h3>Martial Arts</h3>
+
+    <ul>
+        {% for martial_art in object.martial_arts.all %}
+            <li>{{ martial_art.name }}</li>
+        {% empty %}
+            <li>No martial arts assigned.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'event-edit' object.pk %}">Edit</a>
+    <a href="{% url 'event-delete' object.pk %}">Delete</a>
+    <a href="{% url 'event-list' %}">Back to Events</a>
+{% endblock %}
