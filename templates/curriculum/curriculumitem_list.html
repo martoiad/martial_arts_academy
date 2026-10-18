@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Curriculum | Martial Arts Academy
+{% endblock %}
+
+{% block content %}
+    <h2>Curriculum</h2>
+
+    <a href="{% url 'curriculum-create' %}">Add Curriculum Item</a>
+
+    {% for item in object_list %}
+        <article>
+            <h3>
+                <a href="{% url 'curriculum-detail' item.pk %}">
+                    {{ item.name }}
+                </a>
+            </h3>
+
+            <p>Martial Art: {{ item.martial_art.name }}</p>
+            <p>Level: {{ item.get_level_display }}</p>
+        </article>
+    {% empty %}
+        <p>No curriculum items have been added yet.</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Curriculum Form | Martial Arts Academy
+{% endblock %}
+
+{% block content %}
+    <h2>Curriculum Form</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Save</button>
+    </form>
+
+    <a href="{% url 'curriculum-list' %}">Back to Curriculum</a>
+{% endblock %}
