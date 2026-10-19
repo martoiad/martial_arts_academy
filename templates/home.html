@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Home | Martial Arts Academy
+{% endblock %}
+
+{% block content %}
+    <h2>Welcome to Martial Arts Academy</h2>
+
+    <p>
+        Explore martial arts, training curriculum, and upcoming events.
+    </p>
+
+    <img
+            src="{% static 'images/hero.jpg' %}"
+            alt="Martial arts training"
+            width="900"
+    >
+
+    <div class="martial-art-grid">
+
+    <section class="martial-art-card">
+        <h3>Wing Tsun</h3>
+        <img
+                src="{% static 'images/wing_tsun.jpg' %}"
+                alt="Wing Tsun training"
+        >
+        <p>
+            Explore Wing Tsun and its close-range training principles.
+        </p>
+        <a href="{% url 'martial-art-list' %}">View Martial Arts</a>
+    </section>
+
+    <section class="martial-art-card">
+        <h3>Karate</h3>
+        <img
+                src="{% static 'images/karate.jpg' %}"
+                alt="Karate training"
+        >
+        <p>
+            Discover Karate training and traditional forms.
+        </p>
+        <a href="{% url 'martial-art-list' %}">View Martial Arts</a>
+    </section>
+
+    <section class="martial-art-card">
+        <h3>Tai Chi</h3>
+        <img
+                src="{% static 'images/tai_chi.jpg' %}"
+                alt="Tai Chi training"
+        >
+        <p>
+            Explore Tai Chi forms, movement, and controlled practice.
+        </p>
+        <a href="{% url 'martial-art-list' %}">View Martial Arts</a>
+    </section>
+    </div>
+
+{% endblock %}
