@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% load martial_arts_filters %}
+
 {% block title %}
     {{ object.name }} | Martial Arts Academy
 {% endblock %}
 
 {% block content %}
     <h2>{{ object.name }}</h2>
+
+    {% with image_path=object.name|martial_art_image %}
+    <img
+        src="{% static image_path %}"
+        alt="{{ object.name }}"
+        width="500"
+    >
+{% endwith %}
 
     <p>{{ object.description }}</p>
 

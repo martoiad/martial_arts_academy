@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% load martial_arts_filters %}
+
 {% block title %}
     Martial Arts | Martial Arts Academy
 {% endblock %}
@@ -10,16 +13,24 @@
     <a href="{% url 'martial-art-create' %}">Add Martial Art</a>
 
     {% for martial_art in object_list %}
-        <article>
-            <h3>
-                <a href="{% url 'martial-art-detail' martial_art.pk %}">
-                    {{ martial_art.name }}
-                </a>
-            </h3>
+    <article>
+        <h3>
+            <a href="{% url 'martial-art-detail' martial_art.pk %}">
+                {{ martial_art.name }}
+            </a>
+        </h3>
 
-            <p>{{ martial_art.description }}</p>
-        </article>
-    {% empty %}
-        <p>No martial arts have been added yet.</p>
-    {% endfor %}
+        {% with image_path=martial_art.name|martial_art_image %}
+            <img
+                src="{% static image_path %}"
+                alt="{{ martial_art.name }}"
+                width="400"
+            >
+        {% endwith %}
+
+        <p>{{ martial_art.description }}</p>
+    </article>
+{% empty %}
+    <p>No martial arts have been added yet.</p>
+{% endfor %}
 {% endblock %}
