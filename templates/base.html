@@ -14,25 +14,14 @@
 </head>
 <body>
 
-<header>
-    <h1>Martial Arts Academy</h1>
-
-    <nav>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'martial-art-list' %}">Martial Arts</a>
-        <a href="{% url 'curriculum-list' %}">Curriculum</a>
-        <a href="{% url 'event-list' %}">Events</a>
-    </nav>
-</header>
+{% include 'common/header.html' %}
 
 <main>
     {% block content %}
     {% endblock %}
 </main>
 
-<footer>
-    <p>&copy; 2026 Martial Arts Academy</p>
-</footer>
+{% include 'common/footer.html' %}
 
 </body>
 </html>
