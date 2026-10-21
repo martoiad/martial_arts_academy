@@ -21,6 +21,7 @@ Martial Arts Academy is a Django web application for exploring martial arts, the
 - Custom Django template filter
 - Custom 404 page
 - Template inheritance with a shared base template
+- Reusable header and footer partial templates
 - Global navigation
 - Static images and CSS styling
 - Responsive martial art cards on the home page
@@ -176,6 +177,8 @@ The main navigation provides access to:
 - Curriculum
 - Events
 
+The navigation and footer are implemented as reusable template partials and included in the shared base template.
+
 ## Martial Arts
 
 The Martial Arts section supports full CRUD functionality:
@@ -225,6 +228,29 @@ Events can be filtered by event type:
 Events are displayed in date order.
 
 Each event can be connected to one or more martial arts.
+
+## Templates
+
+The project uses Django template inheritance through:
+
+```text
+templates/base.html
+```
+
+Reusable partial templates are stored in:
+
+```text
+templates/common/
+```
+
+and include:
+
+```text
+header.html
+footer.html
+```
+
+They are included in the base template using Django's `{% include %}` template tag.
 
 ## Custom 404 Page
 
@@ -331,6 +357,9 @@ martial_arts_academy/
 │   └── images/
 │
 ├── templates/
+│   ├── common/
+│   │   ├── footer.html
+│   │   └── header.html
 │   ├── curriculum/
 │   ├── events/
 │   ├── martial_arts/
